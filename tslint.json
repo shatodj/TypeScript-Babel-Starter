@@ -1,0 +1,17 @@
+{
+	"extends": [
+		"tslint:recommended",
+		"tslint-config-standard",
+		"tslint-config-airbnb",
+		"tslint-config-prettier"
+	],
+	"jsRules": {},
+	"rules": {
+		"variable-name": [true, "allow-pascal-case"],
+		"ordered-imports": true,
+		"interface-name": [true, "always-prefix"],
+		"no-implicit-dependencies": [true, ["src", "~"]],
+		"arrow-return-shorthand": [true, "multiline"]
+	},
+	"rulesDirectory": []
+}

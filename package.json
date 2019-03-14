@@ -3,19 +3,29 @@
   "version": "0.7.0",
   "license": "MIT",
   "scripts": {
-    "type-check": "tsc --noEmit",
-    "type-check:watch": "npm run type-check -- --watch",
-    "build": "npm run build:types && npm run build:js",
+    "test": "jest",
+    "test:watch": "jest -o --watch",
+    "coverage": "jest --coverage",
+    "prepublishOnly": "npm run build",
+    "clean": "rm -rf dist/",
+    "build": "npm run clean && npm run build:types && npm run build:js",
+    "build:js": "babel src --out-dir dist --ignore '**/__tests__/**' --extensions \".ts,.tsx\"",
     "build:types": "tsc --emitDeclarationOnly",
-    "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline"
+    "typecheck": "tsc --noEmit",
+    "typecheck:watch": "npm run typecheck -- --watch",
+    "format": "tslint --fix --project tsconfig.json"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.0",
-    "@babel/core": "^7.2.0",
-    "@babel/plugin-proposal-class-properties": "^7.2.1",
-    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
-    "@babel/preset-env": "^7.2.0",
-    "@babel/preset-typescript": "^7.1.0",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.3",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/plugin-proposal-decorators": "^7.3.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/jest": "^24.0.6",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "babel-plugin-root-import": "^6.1.0",
+    "tslint": "^5.14.0",
     "typescript": "^3.2.2"
   }
 }
